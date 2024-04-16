@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>계산기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    .container {
+      max-width: 200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 20px;
+      text-align: right;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 5px;
+    }
+    .keypad button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #c4c4c4;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .keypad button:hover {
+      background-color: #b4b4b4;
+    }
+    .keypad .operator {
+      background-color: #4caf50;
+      color: white;
+    }
+    .keypad .operator:hover {
+      background-color: #45a049;
+    }
+    .keypad .equal {
+      background-color: #ff9800;
+      color: white;
+    }
+    .keypad .equal:hover {
+      background-color: #fb8c00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>계산기</h1>
+    <div class="form-group">
+      <input type="text" id="display" readonly>
+    </div>
+    <div class="keypad">
+      <button onclick="addToDisplay('7')">7</button>
+      <button onclick="addToDisplay('8')">8</button>
+      <button onclick="addToDisplay('9')">9</button>
+      <button onclick="addToDisplay('4')">4</button>
+      <button onclick="addToDisplay('5')">5</button>
+      <button onclick="addToDisplay('6')">6</button>
+      <button onclick="addToDisplay('1')">1</button>
+      <button onclick="addToDisplay('2')">2</button>
+      <button onclick="addToDisplay('3')">3</button>
+      <div></div>
+      <button onclick="addToDisplay('0')">0</button>
+      <button onclick="addToDisplay('.')">.</button>
+    </div>
+    <div class="keypad">
+      <button class="operator" onclick="addToDisplay('+')">+</button>
+      <button class="operator" onclick="addToDisplay('-')">-</button>
+      <button class="operator" onclick="addToDisplay('*')">*</button>
+      <button class="operator" onclick="addToDisplay('/')">/</button>
+      <button class="equal" onclick="calculate()">=</button>
+      <button onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+  <script>
+    var display = document.getElementById('display');
+    
+    function addToDisplay(value) {
+      display.value += value;
+    }
+    
+    function clearDisplay() {
+      display.value = '';
+    }
+    
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
